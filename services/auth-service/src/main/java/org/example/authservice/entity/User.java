@@ -1,4 +1,4 @@
-package org.example.authservice.entities;
+package org.example.authservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,6 +10,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -25,6 +26,7 @@ public class User {
     @Column(name = "password_hash")
     private String password;
 
+    @Builder.Default
     private Boolean enabled = true;
 
     @Column(name = "created_at", updatable = false)
@@ -33,7 +35,8 @@ public class User {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
-    @ManyToMany
+    @ManyToMany()
+    @Builder.Default
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -1,4 +1,4 @@
-package org.example.authservice.entities;
+package org.example.authservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
